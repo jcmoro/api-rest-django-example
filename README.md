@@ -31,9 +31,10 @@ Demostrar cómo estructurar un proyecto Django de forma modular, mantenible y f�
 ## 📂 Estructura del proyecto
 
 ```
-todo_api_example/
+djando-api-rest-example/
 ├── Makefile
 ├── Dockerfile
+├── README.md
 ├── docker-compose.yml
 ├── entrypoint.sh
 ├── requirements.txt
@@ -46,6 +47,7 @@ todo_api_example/
 │   └── wsgi.py
 └── tasks/
     ├── __init__.py
+    ├── admin.py
     ├── apps.py
     ├── models.py
     ├── serializers.py
@@ -57,6 +59,9 @@ todo_api_example/
         ├── test_serializers.py
         ├── test_services.py
         └── test_api.py
+    └── migrations/
+        ├── __init__.py
+        ├── 0001_initial.py
 ```
 
 ---
@@ -65,8 +70,7 @@ todo_api_example/
 
 ### 1️⃣ Clonar el proyecto
 ```bash
-git clone https://github.com/tuusuario/todo_api_example.git
-cd todo_api_example
+git clone git@github.com:jcmoro/api-rest-django-example.git
 ```
 
 ### 2️⃣ Construir e iniciar los contenedores
@@ -181,7 +185,8 @@ Usage:
  format                Ejecuta black para formatear el código automáticamente
  
 ```
-
+![img.png](img.png)
+![img_1.png](img_1.png)
 ---
 
 ## 🧑‍💻 Autor
