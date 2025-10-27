@@ -1,37 +1,37 @@
 # 🧩 Django REST API — Clean Architecture + SOLID + Docker
 
-Este proyecto es un **ejemplo práctico y educativo** de cómo construir una **API REST profesional** con:
-- **Django 4.2 + Django REST Framework**
-- **Principios SOLID y Clean Code**
-- **Docker y docker-compose**
-- **Makefile** para automatizar tareas
-- **Tests unitarios y funcionales** con Pytest
+This project is a practical and educational example of how to build a professional REST API with:
+- Django 4.2 + Django REST Framework
+- SOLID principles and Clean Code
+- Docker and docker-compose
+- Makefile to automate tasks
+- Unit and functional tests with Pytest
 
 ---
 
-## 🚀 Objetivo
+## 🚀 Goal
 
-Demostrar cómo estructurar un proyecto Django de forma modular, mantenible y fácilmente testeable, separando responsabilidades en capas.
+Show how to structure a Django project in a modular, maintainable, and easily testable way by separating responsibilities into layers.
 
-| Capa | Carpeta | Responsabilidad |
+| Layer | Folder | Responsibility |
 |------|----------|-----------------|
-| **API / Infraestructura** | `api/` | Configuración general de Django y URLs globales |
-| **Dominio / Aplicación** | `tasks/` | Modelos, lógica de negocio, serialización, servicios y endpoints |
-| **Infraestructura externa** | `Dockerfile`, `docker-compose.yml` | Contenedores y dependencias |
-| **Automatización / DevOps** | `Makefile` | Comandos para ejecutar tareas comunes |
+| API / Infrastructure | `api/` | Global Django configuration and URLs |
+| Domain / Application | `tasks/` | Models, business logic, serialization, services, and endpoints |
+| External infrastructure | `Dockerfile`, `docker-compose.yml` | Containers and dependencies |
+| Automation / DevOps | `Makefile` | Commands for common tasks |
 
 ---
 
-## Frontend: 
+## Frontend
     http://0.0.0.0:8000/api/tasks/
 
-## Admin: 
+## Admin
     http://0.0.0.0:8000/admin/tasks/task/
 
-## 📂 Estructura del proyecto
+## 📂 Project structure
 
 ```
-djando-api-rest-example/
+django-api-rest-example/
 ├── Makefile
 ├── Dockerfile
 ├── README.md
@@ -39,7 +39,7 @@ djando-api-rest-example/
 ├── entrypoint.sh
 ├── requirements.txt
 ├── pytest.ini
-├── main.py
+├── manager.py
 ├── api/
 │   ├── __init__.py
 │   ├── settings.py
@@ -66,65 +66,65 @@ djando-api-rest-example/
 
 ---
 
-## ⚙️ Instalación y ejecución
+## ⚙️ Installation and run
 
-### 1️⃣ Clonar el proyecto
+### 1️⃣ Clone the project
 ```bash
 git clone git@github.com:jcmoro/api-rest-django-example.git
 ```
 
-### 2️⃣ Construir e iniciar los contenedores
+### 2️⃣ Build and start containers
 ```bash
 make up
 ```
 
-### 3️⃣ Aplicar migraciones
+### 3️⃣ Apply migrations
 ```bash
 make migrate
 ```
 
-### 4️⃣ Abrir la API
-La API estará disponible en 👉 [http://localhost:8000/api/tasks/](http://localhost:8000/api/tasks/)
+### 4️⃣ Open the API
+The API will be available at 👉 [http://localhost:8000/api/tasks/](http://localhost:8000/api/tasks/)
 
 ---
 
 ## 🧪 Tests
 
-Ejecuta **todos los tests** (unitarios + funcionales):
+Run all tests (unit + functional):
 ```bash
 make test
 ```
 
-Ejecuta solo los **unitarios**:
+Run only unit tests:
 ```bash
 make test-unit
 ```
 
-Ejecuta solo los **funcionales**:
+Run only functional tests:
 ```bash
 make test-functional
 ```
 
 ---
 
-## 🧠 Principios aplicados
+## 🧠 Principles applied
 
-- **Single Responsibility Principle (SRP)**: cada clase cumple un propósito específico.
-- **Open/Closed Principle (OCP)**: los servicios y repositorios pueden extenderse sin modificar el código existente.
-- **Dependency Inversion Principle (DIP)**: los `services` dependen de abstracciones (`repositories`), no de implementaciones concretas.
-- **Clean Code**: código legible, funciones cortas, nombres descriptivos y separación lógica.
+- Single Responsibility Principle (SRP): each class has a specific purpose.
+- Open/Closed Principle (OCP): services and repositories can be extended without modifying existing code.
+- Dependency Inversion Principle (DIP): services depend on abstractions (repositories), not concrete implementations.
+- Clean Code: readable code, short functions, descriptive names, and clear separation of concerns.
 
 ---
 
 ## 📡 Endpoints
 
-| Método | Ruta | Descripción |
+| Method | Path | Description |
 |---------|------|-------------|
-| `GET` | `/api/tasks/` | Lista de tareas |
-| `POST` | `/api/tasks/` | Crea una nueva tarea |
-| `POST` | `/api/tasks/{id}/complete/` | Marca la tarea como completada |
-| `GET` | `/api/tasks/{id}/` | Detalle de una tarea |
-| `PUT/PATCH/DELETE` | `/api/tasks/{id}/` | Operaciones CRUD |
+| `GET` | `/api/tasks/` | List tasks |
+| `POST` | `/api/tasks/` | Create a new task |
+| `POST` | `/api/tasks/{id}/complete/` | Mark a task as completed |
+| `GET` | `/api/tasks/{id}/` | Task detail |
+| `PUT/PATCH/DELETE` | `/api/tasks/{id}/` | CRUD operations |
 
 ```
 HTTP 200 OK
@@ -134,8 +134,8 @@ Vary: Accept
 [
     {
         "id": 1,
-        "title": "Tarea prueba 1",
-        "description": "Tarea prueba 1 description",
+        "title": "Sample task 1",
+        "description": "Sample task 1 description",
         "completed": false,
         "owner": 1,
         "created_at": "2025-10-26T18:31:31.452551Z"
@@ -143,46 +143,46 @@ Vary: Accept
 ]
 ```
 
-## 🧰 Comandos Makefile disponibles
+## 🧰 Available Makefile commands
 
-Para ver todas las opciones disponibles en el `Makefile`, ejecuta:
+To see all available options in the Makefile, run:
 
 ```bash
 make help
 ```
 
-### Ejemplo de implementación en el Makefile
+### Example output from the Makefile
 
 ```makefile
 Usage:
  make <target>
 
-📖 Help automático
+📖 Automatic help
  help                  Display help
  create-admin          Create user admin django
 
 🐳 Docker
- build                 Construye las imágenes Docker (sin caché)
- up                    Levanta los contenedores (construye primero)
- run                   Levanta el servidor de desarrollo
- down                  Detiene y elimina contenedores, redes y volúmenes
- restart               Reinicia completamente el entorno
- logs                  Muestra los logs del servicio web
+ build                 Build Docker images (no cache)
+ up                    Start containers (build first)
+ run                   Start the development server
+ down                  Stop and remove containers, networks and volumes
+ restart               Fully restart the environment
+ logs                  Show web service logs
 
 ⚙️ Django
- migrate               Ejecuta migraciones de Django
- makemigrations        Crea nuevas migraciones
- shell                 Abre una shell interactiva de Django
+ migrate               Run Django migrations
+ makemigrations        Create new migrations
+ shell                 Open an interactive Django shell
 
 🧪 Tests
- test                  Ejecuta todos los tests (unitarios + funcionales)
- test-unit             Ejecuta solo tests unitarios mockeados (rápidos, sin DB)
- test-functional       Ejecuta tests funcionales (requieren DB)
- list-tasks            Ejecuta lista de tareas en local
+ test                  Run all tests (unit + functional)
+ test-unit             Run only mocked unit tests (fast, no DB)
+ test-functional       Run functional tests (require DB)
+ list-tasks            List tasks locally
 
-🔍 Calidad de código
- lint                  Ejecuta flake8 para revisar el estilo de código
- format                Ejecuta black para formatear el código automáticamente
+🔍 Code quality
+ lint                  Run flake8 to check style
+ format                Run black to auto-format code
  
 ```
 ## Screenshots
@@ -190,7 +190,7 @@ Usage:
 ![img_1.png](img_1.png)
 ---
 
-## 🧑‍💻 Autor
+## 🧑‍💻 Author
 **José Carlos Moro Díaz**  
 💼 GitHub: [@jcmoro](https://github.com/jcmoro)  
-✉️ Contacto: jcmorodiaz@gmail.com
+✉️ Contact: jcmorodiaz@gmail.com

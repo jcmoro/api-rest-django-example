@@ -12,12 +12,12 @@ done
 
 # Aplicar migraciones
 echo "🔄 Ejecutando migraciones..."
-python main.py migrate --noinput
+python manager.py migrate --noinput
 
 # Recoger estáticos si procede
 if [ "$DJANGO_COLLECTSTATIC" = "1" ]; then
   echo "🗂  Recogiendo archivos estáticos..."
-  python main.py collectstatic --noinput
+  python manager.py collectstatic --noinput
 fi
 
 # Ejecutar tests si procede
@@ -32,5 +32,5 @@ if [ "$#" -gt 0 ]; then
   exec "$@"
 else
   echo "🚀 Iniciando servidor Django en 0.0.0.0:8000"
-  exec python main.py runserver 0.0.0.0:8000
+  exec python manager.py runserver 0.0.0.0:8000
 fi

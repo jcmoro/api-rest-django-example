@@ -27,7 +27,7 @@ create-admin: ## Create user admin django
 		-e DJANGO_SUPERUSER_USERNAME=$$USER \
 		-e DJANGO_SUPERUSER_EMAIL=$$EMAIL \
 		-e DJANGO_SUPERUSER_PASSWORD=$$PASS \
-		web python main.py createsuperuser --noinput
+		web python manager.py createsuperuser --noinput
 
 # -------------------------------------------------------------------
 ##@ 🐳 Docker
@@ -41,7 +41,7 @@ up: build makemigrations migrate ## Levanta los contenedores (construye primero)
 	$(COMPOSE) up -d
 
 run: ## Levanta el servidor de desarrollo
-	docker compose run --rm web python main.py runserver 0.0.0.0:8000
+	docker compose run --rm web python manager.py runserver 0.0.0.0:8000
 
 down: ## Detiene y elimina contenedores, redes y volúmenes
 	$(COMPOSE) down -v --remove-orphans
@@ -59,13 +59,13 @@ logs: ## Muestra los logs del servicio web
 .PHONY: migrate makemigrations shell
 
 migrate: ## Ejecuta migraciones de Django
-	$(COMPOSE) run --rm $(WEB) python main.py migrate
+	$(COMPOSE) run --rm $(WEB) python manager.py migrate
 
 makemigrations: ## Crea nuevas migraciones
-	$(COMPOSE) run --rm $(WEB) python main.py makemigrations tasks
+	$(COMPOSE) run --rm $(WEB) python manager.py makemigrations tasks
 
 shell: ## Abre una shell interactiva de Django
-	$(COMPOSE) run --rm $(WEB) python main.py shell
+	$(COMPOSE) run --rm $(WEB) python manager.py shell
 
 # -------------------------------------------------------------------
 ##@ 🧪 Tests

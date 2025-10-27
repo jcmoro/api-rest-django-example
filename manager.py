@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 """
 Archivo principal de entrada para el proyecto Django.
-
-Equivalente a `manage.py`, pero renombrado a `main.py`
-para adaptarse al estándar del proyecto.
 """
 
 import os
