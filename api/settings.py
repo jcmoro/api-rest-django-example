@@ -1,6 +1,6 @@
 """
 Django settings for api project.
-Configuración lista para desarrollo, testing y contenedores Docker.
+Configuration ready for development, testing, and Docker containers.
 """
 
 import os
@@ -16,10 +16,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ============================================================
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key")
 DEBUG = os.getenv("DJANGO_DEBUG", "1") == "1"
-ALLOWED_HOSTS = ["*"]  # Para desarrollo y testing en Docker
+ALLOWED_HOSTS = ["*"]  # For development and testing in Docker
 
 # ============================================================
-# APPS INSTALADAS
+# INSTALLED APPS
 # ============================================================
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -28,8 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'rest_framework',  # necesario para la browsable API
-    # Apps propias
+    'rest_framework',  # required for the browsable API
+    # Local apps
     "tasks",
 ]
 
@@ -38,11 +38,11 @@ INSTALLED_APPS = [
 # ============================================================
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",  # Necesario para auth/admin
+    "django.contrib.sessions.middleware.SessionMiddleware",  # Required for auth/admin
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",  # Necesario para auth/admin
-    "django.contrib.messages.middleware.MessageMiddleware",  # Necesario para admin
+    "django.contrib.auth.middleware.AuthenticationMiddleware",  # Required for auth/admin
+    "django.contrib.messages.middleware.MessageMiddleware",  # Required for admin
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
@@ -54,17 +54,17 @@ ROOT_URLCONF = "api.urls"
 WSGI_APPLICATION = "api.wsgi.application"
 
 # ============================================================
-# BASE DE DATOS
+# DATABASE
 # ============================================================
-# Por defecto usamos SQLite para que el proyecto funcione "out of the box" sin Docker.
-# Si se define DATABASE_URL (como en Docker) o variables POSTGRES_*, usamos PostgreSQL.
+# By default we use SQLite so the project works out of the box without Docker.
+# If DATABASE_URL (as in Docker) or POSTGRES_* variables are defined, we use PostgreSQL.
 from urllib.parse import urlparse
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL:
     parsed = urlparse(DATABASE_URL)
-    # Admite esquemas como: postgres://user:pass@host:port/dbname
+    # Supports schemes like: postgres://user:pass@host:port/dbname
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # ============================================================
-# INTERNACIONALIZACIÓN
+# INTERNATIONALIZATION
 # ============================================================
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
@@ -146,7 +146,7 @@ TEMPLATES = [
 ]
 
 # ============================================================
-# LOGGING BÁSICO
+# BASIC LOGGING
 # ============================================================
 LOGGING = {
     "version": 1,
@@ -163,6 +163,6 @@ LOGGING = {
 }
 
 # ============================================================
-# OTRAS CONFIGURACIONES
+# OTHER SETTINGS
 # ============================================================
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

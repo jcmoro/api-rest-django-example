@@ -1,6 +1,6 @@
 """
-Serializadores DRF que transforman objetos Task <-> JSON.
-Incorporan validaciones específicas.
+DRF serializers that transform Task objects <-> JSON.
+They include specific validations.
 """
 
 from rest_framework import serializers

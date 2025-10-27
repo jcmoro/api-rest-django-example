@@ -1,24 +1,24 @@
 """
-Capa de acceso a datos.
-Encapsula la lógica de interacción con la base de datos (ORM).
+Data access layer.
+Encapsulates the logic of interaction with the database (ORM).
 """
 
 from .models import Task
 
 
 class TaskRepository:
-    """Repositorio responsable de las operaciones CRUD de Task."""
+    """Repository responsible for Task CRUD operations."""
 
     def get(self, task_id):
-        """Obtiene una tarea por su ID o None."""
+        """Get a task by its ID or None."""
         return Task.objects.filter(id=task_id).first()
 
     def create(self, **data):
-        """Crea una nueva tarea en la base de datos."""
+        """Create a new task in the database."""
         return Task.objects.create(**data)
 
     def update(self, task, **data):
-        """Actualiza los campos de una tarea existente."""
+        """Update fields of an existing task."""
         for key, value in data.items():
             setattr(task, key, value)
         task.save()

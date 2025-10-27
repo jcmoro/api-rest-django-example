@@ -1,5 +1,5 @@
 """
-Rutas específicas del módulo de tareas.
+Module-specific routes for the tasks app.
 """
 
 from rest_framework.routers import DefaultRouter

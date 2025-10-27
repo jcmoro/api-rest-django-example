@@ -1,6 +1,6 @@
 """
-Rutas globales del proyecto.
-Incluye el admin y las rutas de la app `tasks`.
+Project global routes.
+Includes the Django admin and the `tasks` app routes.
 """
 
 from django.contrib import admin

@@ -1,5 +1,5 @@
 """
-Modelo de dominio principal: Task (Tarea)
+Main domain model: Task
 """
 
 from django.db import models
@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class Task(models.Model):
-    """Representa una tarea perteneciente a un usuario."""
+    """Represents a task that belongs to a user."""
 
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)

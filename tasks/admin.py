@@ -1,12 +1,12 @@
 """
-Configuración del admin de Django para el modelo Task.
-Se añaden acciones que simulan operaciones típicas de una API:
-- post: crear una nueva tarea de ejemplo para el usuario actual.
-- put: actualización completa de campos seleccionados (ejemplo: prefijar el título).
-- patch: actualización parcial (toggle del estado "completed").
-- delete: eliminar las tareas seleccionadas.
+Django admin configuration for the Task model.
+Adds actions that simulate common API operations:
+- post: create a new sample task for the current user.
+- put: full update of selected items (example: prefix the title).
+- patch: partial update (toggle the "completed" state).
+- delete: delete the selected tasks.
 
-Estas acciones son utilidades para facilitar pruebas desde el admin.
+These actions are utilities to facilitate testing from the admin.
 """
 from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
@@ -34,8 +34,8 @@ class TaskAdmin(admin.ModelAdmin):
 
     def action_post_task(self, request, queryset):
         """
-        Crea una nueva tarea de ejemplo para el usuario actual (request.user).
-        No depende del queryset seleccionado, pero se requiere una selección para habilitar la acción.
+        Create a new sample task for the current user (request.user).
+        It does not depend on the selected queryset, but a selection is required to enable the action.
         """
         data = {
             "title": _("Nueva tarea desde admin"),

@@ -1,6 +1,6 @@
 """
-Capa de dominio: lógica de negocio.
-Define las operaciones principales sobre las tareas.
+Domain layer: business logic.
+Defines the main operations on tasks.
 """
 
 from django.core.exceptions import ValidationError
@@ -8,13 +8,13 @@ from .repositories import TaskRepository
 
 
 class TaskService:
-    """Servicio que contiene las reglas de negocio del modelo Task."""
+    """Service that contains the business rules for the Task model."""
 
     def __init__(self, repository: TaskRepository = None):
         self.repo = repository or TaskRepository()
 
     def create_task(self, owner, data: dict):
-        """Crea una nueva tarea, validando datos antes de persistir."""
+        """Create a new task, validating data before persisting."""
         if data.get("title") and len(data["title"]) > 200:
             raise ValidationError("El título es demasiado largo.")
         data["owner"] = owner
